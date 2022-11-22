@@ -46,4 +46,10 @@
   + Also, we can view the server on the browser by reaching the below url on the browser
 
         http://localhost:5000/
-    
+  + The image built in this scenerio for use in kubernetes are
+    + Frontend/client image on docker hub
+
+          barry1234/talent-client
+    + server/backend image on docker hub
+
+          barry1234/talent-server
