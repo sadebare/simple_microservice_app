@@ -1,8 +1,13 @@
 FROM node:alpine
 
-RUN mkdir -p /home/app
+RUN mkdir -p /usr/src/app
 
-WORKDIR /home/app
+WORKDIR /usr/src/app
+
+COPY "package.json" /usr/src/app/
+COPY "package-lock.json" /usr/src/app/
+
+RUN npm install
 
 COPY . .
 
