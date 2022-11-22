@@ -33,13 +33,13 @@
 
             simple_microservice_app_client
             simple_microservice_app_server
-  + We can then run both the images on thesame network for them to communicate with each other.
+  + We can then run both the images on thesame network for them to communicate with each other. Also note that after creating the images, we automatically generate a network called ''simple_microservice_app_default'' which act as a bridge network
     + client's container
           
-          docker run -d --net talent -p3000:3000 --name client simple_microservice_app_client
+          docker run -d --net simple_microservice_app_default -p3000:3000 --name client simple_microservice_app_client
     + Server's container
 
-          docker run -d --net talent -p5000:5000 --name server simple_microservice_app_server
+          docker run -d --net simple_microservice_app_default -p5000:5000 --name server simple_microservice_app_server
   + We can however view the client on the browser by reaching the below url on the browser
 
         http://localhost:3000/
