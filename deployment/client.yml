@@ -1,0 +1,40 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: client-deployment
+  labels:
+    app: client-app
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      name: client-pod
+      app: client-app
+  template:
+    metadata:
+      name: client-pod
+      labels:
+        name: client-pod
+        app: client-app
+    namespace: default
+    
+
+    spec:
+      containers:
+      - name: client-app
+        image: docker.io/barry1234/talent-client
+        ports:
+        - containerPort: 3000
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: client
+spec:
+  type: LoadBalancer
+  ports:
+  - port: 80
+    targetPort: 3000
+  selector:
+    app: client-app
