@@ -53,4 +53,13 @@
     + server/backend image on docker hub
 
           barry1234/talent-server
+
+##  Kubernetes deployment
+  + We can apply our client yml file deployment and service when in deployment directory by pressing the command
+
+        kubectl apply -f client.yml
+  + Also apply the server side deployment and service by pressing the command
+
+      kubectl apply -f server.yml
   
+  + Now we have our client and server deployment ready to be accessed

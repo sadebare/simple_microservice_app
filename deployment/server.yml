@@ -16,7 +16,7 @@ spec:
       labels:
         name: server-pod
         app: server-app
-    namespace: default
+
 
     spec:
       containers:
@@ -31,6 +31,7 @@ kind: Service
 metadata:
   name: server
 spec:
+  type: NodePort
   ports:
   - port: 80
     targetPort: 5000
