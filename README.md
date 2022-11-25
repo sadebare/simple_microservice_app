@@ -49,12 +49,14 @@
   + The image built in this scenerio for use in kubernetes are
     + Frontend/client image on docker hub
 
-          barry1234/talent-client
+          barry1234/talent-client:v1
     + server/backend image on docker hub
 
-          barry1234/talent-server
+          barry1234/talent-server:v1
 
 ##  Kubernetes deployment
+  + The deployment of the application was done using minikube for testing on local environment. The manifest files for deplotment and services of both the client and server can be found at [deployment](./deployment/)
+  
   + We can apply our client yml file deployment and service when in deployment directory by pressing the command
 
         kubectl apply -f client.yml
