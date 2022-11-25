@@ -12,6 +12,8 @@ COPY "package-lock.json" /usr/src/app/
 
 RUN npm install
 
+RUN apk --no-cache add curl
+
 COPY . .
 
 EXPOSE 3000

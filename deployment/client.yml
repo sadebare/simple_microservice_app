@@ -21,7 +21,7 @@ spec:
     spec:
       containers:
       - name: client-app
-        image: docker.io/barry1234/talent-client
+        image: docker.io/barry1234/talent-client:v1
         ports:
         - containerPort: 3000
         env:

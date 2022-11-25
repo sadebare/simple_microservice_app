@@ -21,7 +21,7 @@ spec:
     spec:
       containers:
       - name: server-app
-        image: docker.io/barry1234/talent-server
+        image: docker.io/barry1234/talent-server:v1
         ports:
         - containerPort: 5000
 ---
@@ -31,9 +31,9 @@ kind: Service
 metadata:
   name: server
 spec:
-  type: NodePort
+  type: ClusterIP
   ports:
-  - port: 80
+  - port: 5000
     targetPort: 5000
   selector:
     app: server-app
