@@ -54,7 +54,7 @@
 
           barry1234/talent-server:v1
 
-##  Kubernetes deployment
+##  Kubernetes manifest file deployment
   + The deployment of the application was done using minikube for testing on local environment. The manifest files for deplotment and services of both the client and server can be found at [deployment](./deployment/)
   
   + We can apply our client yml file deployment and service when in deployment directory by pressing the command
@@ -64,4 +64,44 @@
 
       kubectl apply -f server.yml
   
-  + Now we have our client and server deployment ready to be accessed
+  + Now we have our client and server deployment ready to be accessed. We can get all information about our deployment by running:-
+
+        kubectl get all
+      + We get this as our response via the terminal
+
+      ![manifest](./manifest.png)
+
+      + Also, we get our web application from the browser by running:-
+
+            minikube service client
+      + It will automatically open the web application on the browser
+
+        ![manifest-deploy](./manifest-deploy.png)
+
+##  Helm deployment
+  + Helm is basically a package manager for kubernetes which makes deployment easier and reusable to use. It basically uses chart which helps to define, install nnd upgrade even the most complex Kubernetes application.
+
+  + Helm chart are created for both the client and server side of the application [here](./helm-deploy/)
+
+  + We can deploy the server chart in [here](./helm-deploy/) by simply running:
+
+        helm install server ./server/
+  + Then, we can install the client chart in [here](./helm-deploy/) by simply running:
+
+        helm install client ./client/
+  
+  + Let's verify the deployments in our kubernetes cluster by running the below command on the terminal:- 
+
+        kubectl get all
+      + We have this response on the terminal
+
+          ![helm-deploy](./helm-resource.png)
+  + Now that we have all our deployments and services in the cluster, we can access the application on our local browser by running multiple commands from the infromation gotten when we used helm in the deployment:-
+    ![helm-process](./helm_process.png)
+  + We can access the application on the browser after successfully running the aforementioned commands.
+
+        http://127.0.0.1:8080
+  + We can have this as a result on the browser
+
+      ![helm-deploy](./helm-deploy.png)
+  
