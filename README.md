@@ -62,7 +62,7 @@
         kubectl apply -f client.yml
   + Also apply the server side deployment and service by pressing the command
 
-      kubectl apply -f server.yml
+        kubectl apply -f server.yml
   
   + Now we have our client and server deployment ready to be accessed. We can get all information about our deployment by running:-
 
