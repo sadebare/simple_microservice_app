@@ -21,9 +21,9 @@ spec:
     spec:
       containers:
       - name: client-app
-        image: docker.io/barry1234/talent-client:v1
+        image: docker.io/barry1234/tclient
         ports:
-        - containerPort: 3000
+        - containerPort: 80
         env:
         - name: "proxy"
           value: "http://server.default.svc.cluster.local:5000/"
@@ -38,6 +38,6 @@ spec:
   type: ClusterIP
   ports:
   - port: 80
-    targetPort: 3000
+    targetPort: 80
   selector:
     app: client-app

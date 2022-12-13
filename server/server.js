@@ -1,9 +1,9 @@
 const express =  require('express')
+
 const app = express()
 
-app.get("/", (req, res) => {
-  res.json({"content": ["TALENT PLUS",]})
-})
+var cors = require("cors");
+app.use(cors());
 
 app.get("/api", (req, res) => {
    res.json({"content": ["TALENT PLUS",]})
