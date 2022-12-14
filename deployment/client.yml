@@ -24,10 +24,7 @@ spec:
         image: docker.io/barry1234/tclient
         ports:
         - containerPort: 80
-        env:
-        - name: "proxy"
-          value: "http://server.default.svc.cluster.local:5000/"
-  
+
 ---
 
 apiVersion: v1

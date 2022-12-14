@@ -7,7 +7,7 @@ function App() {
   const [loading, setLoading] = useState(false)
   console.log(backendData)
   
-  const url = "http://server:5000/api"
+  const url = "http://server.example.com/api"
   const fetchBackend = async () =>{
  
     try {
