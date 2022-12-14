@@ -16,18 +16,13 @@ spec:
       labels:
         name: client-pod
         app: client-app
-    
-
     spec:
       containers:
       - name: client-app
-        image: docker.io/barry1234/talent-client
+        image: ikegabriel/client-slim:main2
         ports:
-        - containerPort: 3000
-        env:
-        - name: "proxy"
-          value: "http://server.default.svc.cluster.local:5000/"
-  
+        - containerPort: 80
+        
 ---
 
 apiVersion: v1
@@ -38,6 +33,6 @@ spec:
   type: ClusterIP
   ports:
   - port: 3000
-    targetPort: 3000
+    targetPort: 80
   selector:
     app: client-app
