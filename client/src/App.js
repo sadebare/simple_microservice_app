@@ -6,7 +6,7 @@ function App() {
   const [backendData, setBackend] = useState([{}])
 
   useEffect(() => {
-    fetch("/api").then(
+    fetch("http://talentserver.example.com/api").then(
       response => response.json()
     ).then(
       data => {

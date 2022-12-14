@@ -16,12 +16,11 @@ spec:
       labels:
         name: server-pod
         app: server-app
-
-
     spec:
       containers:
       - name: server-app
-        image: docker.io/barry1234/talent-server:v1
+        image: ikegabriel/server-slim:main2
+        imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 5000
 ---
