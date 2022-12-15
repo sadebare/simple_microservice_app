@@ -19,7 +19,7 @@ spec:
     spec:
       containers:
       - name: server-app
-        image: ikegabriel/server-slim:main2
+        image: barry1234/server-slim
         imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 5000
