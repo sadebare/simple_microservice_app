@@ -1,0 +1,39 @@
+pipeline {
+
+  agent any
+
+  stages {
+
+    stage('Checkout Source') {
+      steps {
+        git url:'https://github.com/sadebare/simple_microservice_app', branch:'main'
+      }
+    }
+
+    stage('Deploy client App') {
+      steps {
+        script {
+          kubernetesDeploy(configs: "deployment/client.yml", kubeconfigId: "kubeconfig")
+        }
+      }
+    }
+
+    stage('Deploy Server App') {
+      steps {
+        script {
+          kubernetesDeploy(configs: "deployment/server.yml", kubeconfigId: "kubeconfig")
+        }
+      }
+    }
+
+    stage('Deploy Ingress service') {
+      steps {
+        script {
+          kubernetesDeploy(configs: "deployment/ingress.yml", kubeconfigId: "kubeconfig")
+        }
+      }
+    }
+
+  }
+
+}
