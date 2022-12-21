@@ -13,7 +13,7 @@ pipeline {
     stage('Deploy client App') {
       steps {
         script {
-          kubernetesDeploy(configs: "deployment/client.yml", kubeconfigId: "kubeconfig")
+          kubernetesDeploy(configs: "deployment/client.yml", kubeconfigId: "minikubeconfig")
         }
       }
     }
@@ -21,17 +21,19 @@ pipeline {
     stage('Deploy Server App') {
       steps {
         script {
-          kubernetesDeploy(configs: "deployment/server.yml", kubeconfigId: "kubeconfig")
+          kubernetesDeploy(configs: "deployment/server.yml", kubeconfigId: "minikubeconfig")
         }
       }
     }
 
-    stage('Deploy Ingress service') {
-      steps {
-        script {
-          kubernetesDeploy(configs: "deployment/ingress.yml", kubeconfigId: "kubeconfig")
+    stage('Deploy ingress service') {
+        steps {
+            withKubeConfig([credentialsId: 'clikubeconfig']) {
+              sh 'curl -LO "https://storage.googleapis.com/kubernetes-release/release/v1.20.5/bin/linux/amd64/kubectl"'
+              sh 'chmod u+x ./kubectl'
+              sh './kubectl apply -f deployment/ingress.yml'
+            }
         }
-      }
     }
 
   }
