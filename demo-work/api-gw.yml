@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: api-gateway-deployment
+  labels:
+    app: api-gw-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      name: api-gw-pod
+      app: api-gw-app
+  template:
+    metadata:
+      name: api-gw-pod
+      labels:
+        name: api-gw-pod
+        app: api-gw-app
+    spec:
+      containers:
+      - name: api-gw-app
+        image: barry1234/api-gateway:v1
+        ports:
+        - containerPort: 5000
+        
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: api-gw-service
+spec:
+  type: NodePort
+  ports:
+  - port: 5000
+    targetPort: 5000
+    nodePort: 30000
+  selector:
+    app: api-gw-app
